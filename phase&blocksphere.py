@@ -10,8 +10,7 @@ import math
 Aer.backends()
 
 # %%
-qasm_simulator = Aer.get_backend
-('qasm_simulator')
+qasm_simulator = Aer.get_backend('qasm_simulator')
 
 # %%
 statevector_simulator = Aer.get_backend('statevector_simulator')
@@ -22,14 +21,13 @@ statevector_simulator = Aer.get_backend('statevector_simulator')
 def run_on_simulators(circuit):
     statevec_job = execute(circuit, backend=statevector_simulator)
     result = statevec_job.result()
-
     statevec = result.get_statevector()
 
     num_qubits = circuit.num_qubits
     circuit.measure([i for i in range(num_qubits)],
                     [i for i in range(num_qubits)])
-    qasm_job = execute(circuit, backend=qasm_simulator, shots=1024).result()
 
+    qasm_job = execute(circuit, backend=qasm_simulator, shots=1024).result()
     counts = qasm_job.get_counts()
 
     return statevec, counts
