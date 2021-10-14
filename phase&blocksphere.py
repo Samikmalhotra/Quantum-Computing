@@ -46,3 +46,13 @@ x = run_on_simulators(circuit)
 plot_histogram(x[1])
 
 # %%
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.cx(0, 1)
+x = run_on_simulators(circuit)
+plot_bloch_multivector(x[0])
+# plot_histogram(x[1])
+
+# %%
+plot_histogram(x[1])
+# %%
