@@ -68,3 +68,20 @@ circuit.ry(math.pi/4, 0)
 circuit.ry(math.pi/2, 1)
 x = run_on_simulators(circuit)
 plot_bloch_multivector(x[0])
+
+# %%
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+x = run_on_simulators(circuit)
+plot_bloch_multivector(x[0])
+
+# %%
+circuit = QuantumCircuit(2, 2)
+circuit.h(0)
+circuit.z(0)
+x = run_on_simulators(circuit)
+plot_bloch_multivector(x[0])
+
+# %%
+plot_histogram(x[1])
+# %%
