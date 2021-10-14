@@ -39,4 +39,10 @@ x = run_on_simulators(circuit)
 
 # %%
 plot_bloch_multivector(x[0])
+plot_histogram(x[1])
+# %%
+circuit.h(0)
+x = run_on_simulators(circuit)
+plot_histogram(x[1])
+
 # %%
