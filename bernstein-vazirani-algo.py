@@ -5,29 +5,38 @@ from qiskit.visualization import plot_histogram
 from matplotlib import *
 
 # %%
-secret_number = '1000101'
+secret_number = '1010010111001011'
 
 # %%
-circuit = QuantumCircuit(8, 7)
+circuit = QuantumCircuit(len(secret_number)+1, len(secret_number))
 
 # %%
-circuit.h([i for i in range(7)])
-circuit.x(7)
-circuit.h(7)
+circuit.h([i for i in range(len(secret_number))])
+circuit.x(len(secret_number))
+circuit.h(len(secret_number))
 
 circuit.barrier()
 circuit.draw(output='mpl')
 
 # %%
-circuit.cx(0, 7)
-circuit.cx(2, 7)
-circuit.cx(6, 7)
+# circuit.cx(0, 7)
+# circuit.cx(2, 7)
+# circuit.cx(6, 7)
+
+reverse_number = secret_number[:: -1]
+for index, one in enumerate(reverse_number):
+    print(f"index {index} is {one}")
+    if one == "1":
+        circuit.cx(index, len(secret_number))
+
 circuit.barrier()
 circuit.draw(output='mpl')
 
 # %%
-circuit.h([i for i in range(7)])
-circuit.measure([i for i in range(7)], [i for i in range(7)])
+circuit.h([i for i in range(len(secret_number))])
+circuit.barrier()
+circuit.measure([i for i in range(len(secret_number))],
+                [i for i in range(len(secret_number))])
 circuit.draw(output='mpl')
 
 # %%
