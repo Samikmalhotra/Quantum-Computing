@@ -19,3 +19,21 @@ circuit.barrier()
 circuit.draw(output='mpl')
 
 # %%
+circuit.cx(0, 7)
+circuit.cx(2, 7)
+circuit.cx(6, 7)
+circuit.barrier()
+circuit.draw(output='mpl')
+
+# %%
+circuit.h([i for i in range(7)])
+circuit.measure([i for i in range(7)], [i for i in range(7)])
+circuit.draw(output='mpl')
+
+# %%
+simulator = Aer.get_backend('qasm_simulator')
+result = execute(circuit, backend=simulator, shots=1).result()
+counts = result.get_counts()
+print(counts)
+
+# %%
