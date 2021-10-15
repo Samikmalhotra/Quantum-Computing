@@ -19,3 +19,23 @@ circuit.barrier()
 circuit.draw(output='mpl')
 
 # %%
+circuit.cx(0, 1)
+circuit.h(0)
+
+circuit.barrier()
+circuit.draw(output='mpl')
+
+# %%
+circuit.measure([0, 1], [0, 1])
+circuit.barrier()
+
+circuit.draw(output='mpl')
+
+# %%
+circuit.cx(1, 2)
+circuit.cz(0, 2)
+
+circuit.measure([2], [2])
+circuit.draw(output='mpl')
+
+# %%
