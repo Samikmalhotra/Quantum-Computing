@@ -39,3 +39,8 @@ circuit.measure([2], [2])
 circuit.draw(output='mpl')
 
 # %%
+simulator = Aer.get_backend('qasm_simulator')
+result = execute(circuit, backend=simulator, shots=1024).result()
+plot_histogram(result.get_counts(circuit))
+
+# %%
