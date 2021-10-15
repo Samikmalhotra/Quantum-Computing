@@ -1,5 +1,6 @@
 # %%
 from qiskit import *
+from qiskit.providers import ibmq
 from qiskit.tools.visualization import plot_histogram
 from matplotlib import *
 
@@ -30,5 +31,22 @@ result = execute(circuit, backend=backend, shots=1024).result()
 counts = result.get_counts(circuit)
 
 plot_histogram([counts])
+
+# %%
+# Real Quantum Computer
+IBMQ.load_account()
+# %%
+provider = IBMQ.get_provider("ibm-q")
+provider.backends()
+
+# %%
+for backend in provider.backends():
+    try:
+        qubit_count = len(backend.properties().qubits)
+    except:
+        qubit_count = "simulated"
+    print(f"{backend.name()} : {backend.status().pending_jobs} pending jobs & {qubit_count} qubits")
+# %%
+quantum_computer = provider.get_backend('ibmq_belem')
 
 # %%
