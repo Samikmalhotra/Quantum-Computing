@@ -50,3 +50,11 @@ for backend in provider.backends():
 quantum_computer = provider.get_backend('ibmq_belem')
 
 # %%
+quantum_result = execute(
+    circuit, backend=quantum_computer, shots=1024).result()
+
+# %%
+quantum_counts = quantum_result.get_counts(circuit)
+plot_histogram([quantum_counts])
+
+# %%
