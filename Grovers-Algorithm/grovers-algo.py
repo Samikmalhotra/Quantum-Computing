@@ -38,3 +38,14 @@ mainCircuit = QuantumCircuit(2, 2, name="MainCircuit")
 mainCircuit.h([0, 1])
 mainCircuit.append(oracleCircuit, [0, 1])
 mainCircuit.draw(output='mpl')
+
+# %%
+reflectionCircuit = QuantumCircuit(2, name="ReflectionCircuit")
+reflectionCircuit.h([0, 1])
+reflectionCircuit.z([0, 1])
+reflectionCircuit.cz(0, 1)
+reflectionCircuit.h([0, 1])
+reflectionCircuit.to_gate()
+reflectionCircuit.draw(output='mpl')
+
+# %%
