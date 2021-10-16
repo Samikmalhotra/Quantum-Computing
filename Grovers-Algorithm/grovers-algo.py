@@ -54,3 +54,9 @@ mainCircuit.measure([0, 1], [0, 1])
 mainCircuit.draw(output='mpl')
 
 # %%
+backend = Aer.get_backend('qasm_simulator')
+result = execute(mainCircuit, backend, shots=1).result()
+counts = result.get_counts(mainCircuit)
+plot_histogram([counts])
+
+# %%
