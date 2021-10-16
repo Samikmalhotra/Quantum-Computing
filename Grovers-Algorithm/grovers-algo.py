@@ -49,3 +49,8 @@ reflectionCircuit.to_gate()
 reflectionCircuit.draw(output='mpl')
 
 # %%
+mainCircuit.append(reflectionCircuit, [0, 1])
+mainCircuit.measure([0, 1], [0, 1])
+mainCircuit.draw(output='mpl')
+
+# %%
