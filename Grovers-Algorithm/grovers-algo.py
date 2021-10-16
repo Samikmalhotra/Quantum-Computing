@@ -25,3 +25,16 @@ for index, number in enumerate(randomList):
         print("The index of the winning number is: ", index)
         break
 # %%
+# Grover's Search Algo
+# Oracle Circuit - (WinningState 11)
+
+oracleCircuit = QuantumCircuit(2, name="OracleCircuit")
+oracleCircuit.cz(0, 1)
+oracleCircuit.to_gate()
+oracleCircuit.draw(output='mpl')
+
+# %%
+mainCircuit = QuantumCircuit(2, 2, name="MainCircuit")
+mainCircuit.h([0, 1])
+mainCircuit.append(oracleCircuit, [0, 1])
+mainCircuit.draw(output='mpl')
